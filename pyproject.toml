@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ennchan-rag"
+version = "0.0.1.dev1"
+description = "RAG implementation using LangChain"
+readme = "README.md"
+authors = [
+    {name = "Nick Ecuacion", email = "nicololynsuecuacion@gmail.com"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "langchain>=0.0.267",
+    "langchain-core>=0.0.10",
+    "langchain-community>=0.0.10",
+    "langchain-huggingface>=0.0.1",
+    "langgraph>=0.0.10",
+    "pydantic>=2.0.0",
+    "beautifulsoup4>=4.12.0",
+    "ennchan_search>=0.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ecinauce/ennchan-rag01"
+"Bug Tracker" = "https://github.com/ecinauce/ennchan-rag01/issues"
