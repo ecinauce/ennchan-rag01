@@ -10,7 +10,7 @@ pip install ennchan-rag-*.whl
 
 **WARNING!**
 
-You need to install [ennchan_search](https://placeholder.it/) beforehand.
+You need to install [ennchan_search](https://github.com/ecinauce/ennchan-search01/) beforehand. Give it a visit, follow the installation guide, then come back here.
 
 ## How to use:
 ### Config
