@@ -4,7 +4,7 @@ LangChain RAG Project with Custom Search engines
 ## Installation:
 
 
-pip install ennchan-rag-*.whl
+`pip install ennchan-rag-*.whl`
 
 (*Best do it inside a venv*)
 
