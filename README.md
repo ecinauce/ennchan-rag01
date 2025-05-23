@@ -1,45 +1,43 @@
-# Ennchan's RAG Project 01
-LangChain RAG Project with Custom Search engines
+# Ennchan RAG Proof of Concept
 
-## Installation:
+A locally hosted chatbot that answers questions using information from the internet.
 
+## Project Overview
 
-`pip install ennchan-rag-*.whl`
+### What is this?
+This is a Q&A chatbot that receives user questions, searches the internet for answers, and provides summarized responses. The primary goal was to create a local chatbot that runs directly on your PC.
 
-(*Best do it inside a venv*)
+### Why build it?
+This project addresses the limitations of services like ChatGPT and DeepSeek, which often face usage limits and server congestion. By hosting the chatbot locally, users can maintain consistent access and prompt quality while having more control over the system.
 
-**WARNING!**
+## Features
 
-You need to install [ennchan_search](https://github.com/ecinauce/ennchan-search01/) beforehand. Give it a visit, follow the installation guide, then come back here.
+### Core Functionality
+- Local-first architecture
+- Interactive Q&A capabilities
+- Customizable model selection
+- Configurable search engine integration (planned)
 
-## How to use:
-### Config
-Filename: config.json
-```json
-{
-    "BRAVE_API_KEY": "please get your own key",
-    "USER_AGENT": "EnnchanLangChainRAG/1.0",
-    "LANGSMITH_TRACING": "true",
-    "LANGSMITH_API_KEY": "please get your own key",
-    "HUGGINGFACEHUB_API_TOKEN": "please get your own token",
-    "quantization": 1,
-    "model_name": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    "embeddings_model": "sentence-transformers/all-MiniLM-L6-v2",
-    "prompt_source": "rlm/rag-prompt",
-    "context_scope": 3000,
-    "quantization_config": {
-        "load_in_4bit": 1,
-        "bnb_4bit_quant_type": "nf4",
-        "bnb_4bit_compute_dtype": "float16",
-        "bnb_4bit_use_double_quant": 1
-    }
-}
-```
-### Code
-```python
-from ennchan_rag.ask import ask
+### Query Capabilities
+Users can ask any type of question, and the chatbot will provide answers based on the capabilities of the loaded model.
 
-config = "path/to/config.json"
-question = "What are the 3 laws of robotics?"
-answers = ask(question, config)
-```
+### How it Works
+1. The system processes the user's prompt and converts it into a search query
+2. Sends the query to the search engine API
+3. Compiles the search results
+4. Uses information retrieval strategies to select relevant context
+5. Triggers the LLM to generate a response based on the selected context
+
+## Optimizations
+
+### Performance Improvements
+- Implemented multiprocessing for better resource utilization
+- Added network retry mechanisms for improved reliability
+
+## Interfaces
+
+### Current
+- Command Line Interface (CLI)
+
+### Coming Soon
+- Web App API

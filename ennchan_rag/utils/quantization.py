@@ -7,6 +7,19 @@ def str_to_bool(value: str) -> bool:
 
 
 def load_quantization(config):
+    """
+    Load quantization configuration for the model.
+    
+    This function checks if quantization is enabled and CUDA is available,
+    then creates the appropriate BitsAndBytesConfig for model quantization.
+    
+    Args:
+        config: Configuration object containing quantization settings
+        
+    Returns:
+        Dictionary with quantization_config if quantization is enabled and CUDA is available,
+        otherwise an empty dictionary
+    """
     if config.quantization and torch.cuda.is_available():
         print("Loading quantized model...")
         # Convert string values to boolean if needed

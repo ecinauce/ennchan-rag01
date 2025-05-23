@@ -1,8 +1,8 @@
-from ennchan_rag import QAModel, SearchAugmentedQAModel
+from ennchan_rag.core.model import SearchAugmentedQAModel
 from ennchan_rag.config import load_config
 from ennchan_rag.loaders import WebLoaderAdapter
 from ennchan_rag.utils.quantization import load_quantization
-# from ennchan_rag.retrievers import SimilaritySearchRetrieval
+from ennchan_rag.utils.model_cache import get_model
 from langchain_huggingface import HuggingFacePipeline, HuggingFaceEmbeddings
 from langchain_core.vectorstores import InMemoryVectorStore
 
@@ -21,7 +21,7 @@ def ask(question: str, p_config: str = None) -> str:
     config = load_config(p_config)
     embeddings = HuggingFaceEmbeddings(model_name=config.embeddings_model)
     vector_store = InMemoryVectorStore(embeddings)
-    llm = HuggingFacePipeline.from_model_id(
+    llm = get_model(
         model_id=config.model_name,
         task="text-generation",
         pipeline_kwargs=dict(

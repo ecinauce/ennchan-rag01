@@ -6,6 +6,12 @@ from typing import Dict, Any, ClassVar
 
 @dataclass
 class Config:
+    """
+    Configuration class for the RAG module.
+    
+    This class holds all configuration parameters for the RAG module,
+    including API keys, model settings, and RAG parameters.
+    """
     # Environment variables
     BRAVE_API_KEY: str
     USER_AGENT: str
@@ -43,7 +49,7 @@ class Config:
     }
     
     def __post_init__(self):
-        # Set environment variables
+        """Set environment variables after initialization."""
         os.environ["BRAVE_API_KEY"] = self.BRAVE_API_KEY
         os.environ["USER_AGENT"] = self.USER_AGENT
         os.environ["LANGSMITH_TRACING"] = self.LANGSMITH_TRACING
@@ -52,6 +58,18 @@ class Config:
 
 
 def load_config(config_path: str = None) -> Config:
+    """
+    Load configuration from a JSON file.
+    
+    Args:
+        config_path: Path to the configuration file, or None to use default path
+        
+    Returns:
+        Config object with loaded configuration
+        
+    Raises:
+        SystemExit: If the configuration file is not found
+    """
     if not config_path:
         # Load configuration
         script_dir = os.path.dirname(os.path.abspath(__file__))
